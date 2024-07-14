@@ -1,0 +1,7 @@
+pagestests\AddItemToCartTest.class
+pagestests\LoginPageTest.class
+pagestests\WishListPageTest.class
+pagestests\SearchItemTest.class
+pagestests\CheckoutProcessTest.class
+setup\BaseTest.class
+pagestests\RegisterPageTest.class

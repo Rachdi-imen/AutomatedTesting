@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-07-14T17:30:24 WAT" name="Suite" finished-at="2024-07-14T17:31:15 WAT" duration-ms="50950">
+    <groups>
+    </groups>
+    <test started-at="2024-07-14T17:30:24 WAT" name="E2E Test" finished-at="2024-07-14T17:30:50 WAT" duration-ms="26242">
+      <class name="pagestests.RegisterPageTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:pagestests.RegisterPageTest@19932c16]" started-at="2024-07-14T17:30:24 WAT" name="setUp" finished-at="2024-07-14T17:30:31 WAT" duration-ms="7041" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="registerPageTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:1, instance:pagestests.RegisterPageTest@19932c16]" started-at="2024-07-14T17:30:31 WAT" name="registerPageTest" data-provider="csvData" finished-at="2024-07-14T17:30:37 WAT" duration-ms="5912" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Sarah]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Bchir]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[12]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[June]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[2000]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[tesgdaert@gmail.com]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[RSE]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[QaTester123]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- registerPageTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:pagestests.RegisterPageTest@19932c16]" started-at="2024-07-14T17:30:50 WAT" name="tearDown" finished-at="2024-07-14T17:30:50 WAT" duration-ms="313" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- pagestests.RegisterPageTest -->
+      <class name="pagestests.CheckoutProcessTest">
+        <test-method signature="checkoutTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:4, instance:pagestests.CheckoutProcessTest@61c4eee0]" started-at="2024-07-14T17:30:42 WAT" name="checkoutTest" data-provider="userData" finished-at="2024-07-14T17:30:50 WAT" duration-ms="7292" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[TestCity]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[TestAddr1]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[TestAdr2]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[125889]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[7896325]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[8965317]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkoutTest -->
+      </class> <!-- pagestests.CheckoutProcessTest -->
+      <class name="pagestests.AddItemToCartTest">
+        <test-method signature="testCheckout()[pri:3, instance:pagestests.AddItemToCartTest@35841320]" started-at="2024-07-14T17:30:39 WAT" name="testCheckout" finished-at="2024-07-14T17:30:42 WAT" duration-ms="3453" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCheckout -->
+      </class> <!-- pagestests.AddItemToCartTest -->
+      <class name="pagestests.LoginPageTest">
+        <test-method signature="loginTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:2, instance:pagestests.LoginPageTest@7ae0a9ec]" started-at="2024-07-14T17:30:37 WAT" name="loginTest" data-provider="csvData" finished-at="2024-07-14T17:30:39 WAT" duration-ms="1662" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Sarah]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Bchir]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[12]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[June]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[2000]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[tesgdaert@gmail.com]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[RSE]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[QaTester123]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginTest -->
+      </class> <!-- pagestests.LoginPageTest -->
+    </test> <!-- E2E Test -->
+    <test started-at="2024-07-14T17:30:51 WAT" name="Test2" finished-at="2024-07-14T17:31:06 WAT" duration-ms="14962">
+      <class name="pagestests.WishListPageTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:pagestests.WishListPageTest@57bc27f5]" started-at="2024-07-14T17:30:51 WAT" name="setUp" finished-at="2024-07-14T17:30:58 WAT" duration-ms="7261" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="addItemToWishListPage()[pri:3, instance:pagestests.WishListPageTest@57bc27f5]" started-at="2024-07-14T17:30:58 WAT" name="addItemToWishListPage" finished-at="2024-07-14T17:31:05 WAT" duration-ms="7459" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- addItemToWishListPage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:pagestests.WishListPageTest@57bc27f5]" started-at="2024-07-14T17:31:05 WAT" name="tearDown" finished-at="2024-07-14T17:31:06 WAT" duration-ms="232" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- pagestests.WishListPageTest -->
+    </test> <!-- Test2 -->
+    <test started-at="2024-07-14T17:31:06 WAT" name="Test3" finished-at="2024-07-14T17:31:15 WAT" duration-ms="8857">
+      <class name="pagestests.SearchItemTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:pagestests.SearchItemTest@68c9d179]" started-at="2024-07-14T17:31:06 WAT" name="setUp" finished-at="2024-07-14T17:31:11 WAT" duration-ms="5444" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="searchTest()[pri:3, instance:pagestests.SearchItemTest@68c9d179]" started-at="2024-07-14T17:31:11 WAT" name="searchTest" finished-at="2024-07-14T17:31:14 WAT" duration-ms="3157" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- searchTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:pagestests.SearchItemTest@68c9d179]" started-at="2024-07-14T17:31:14 WAT" name="tearDown" finished-at="2024-07-14T17:31:15 WAT" duration-ms="247" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- pagestests.SearchItemTest -->
+    </test> <!-- Test3 -->
+  </suite> <!-- Suite -->
+</testng-results>

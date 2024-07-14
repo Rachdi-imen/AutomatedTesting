@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <!--
+         <listeners>
+             <listener class-name="io.qameta.allure.testng.AllureTestNg" />
+         </listeners>
+   -->
+ <listeners>
+  <listener class-name="utils.ExtentTestNGITestListener"/>
+ </listeners>
+
+
+
+  <test thread-count="5" name="E2E Test">
+
+      <classes>
+          <class name="pagestests.RegisterPageTest"/>
+          <class name="pagestests.LoginPageTest"/>
+          <class name="pagestests.AddItemToCartTest"/>
+          <class name="pagestests.CheckoutProcessTest"/>
+      </classes>
+
+  </test>
+
+
+    <test thread-count="5" name="Test2">
+        <classes>
+            <class name="pagestests.WishListPageTest"/>
+
+        </classes>
+
+    </test>
+
+
+
+    <test thread-count="5" name="Test3">
+        <classes>
+            <class name="pagestests.SearchItemTest"/>
+
+
+        </classes>
+
+    </test>
+
+</suite> <!-- Suite -->
