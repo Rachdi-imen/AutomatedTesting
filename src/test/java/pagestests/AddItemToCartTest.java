@@ -7,17 +7,22 @@ import setup.BaseTest;
 
 public class AddItemToCartTest extends BaseTest {
 
-    String name = "Apple mac";
+    private final String name = "Apple mac";
 
+    /**
+     * Tests the checkout process by adding a product to the cart and verifying the addition.
+     */
     @Test(priority = 3)
     public void testCheckout() {
+        AddItemToCart addItemPage = new AddItemToCart(driver);
+        addItemPage.addProductToCart(name);
 
-        new AddItemToCart(driver).addProductToCart(name);
-        //assert product added to cart
-        Assert.assertEquals(new AddItemToCart(driver).assertProductAddedToCart(), "The product has been added to your shopping cart");
-        //navigate To Shopping Cart Page
-        new AddItemToCart(driver).navigateToShoppingCartPage();
+        // Assert product added to cart
+        String assertMsg = addItemPage.assertProductAddedToCart();
+        Assert.assertEquals(assertMsg, "The product has been added to your shopping cart",
+                "Product addition message is not as expected.");
 
-
+        // Navigate to shopping cart page
+        addItemPage.navigateToShoppingCartPage();
     }
 }

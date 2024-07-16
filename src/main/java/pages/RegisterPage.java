@@ -12,16 +12,9 @@ import org.testng.Assert;
 public class RegisterPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
-
-    public RegisterPage(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-
-    //Locators
+    // Locators
     private final By assertRegistrationPageTitle = By.xpath("//h1[text()='Register']");
     private final By registerButton = By.linkText("Register");
-    //private final By genderMaleRadioButton = By.id("gender-male");
     private final By genderFemaleRadioButton = By.id("gender-female");
     private final By firstNameField = By.id("FirstName");
     private final By lastNameField = By.id("LastName");
@@ -36,73 +29,97 @@ public class RegisterPage {
     private final By registerAssertion = By.xpath("//div[@class='result']");
     private final By continueButton = By.xpath("//a[@class='button-1 register-continue-button']");
     private final By logOutButton = By.cssSelector("a[href='/logout']");
+    /**
+     * Constructs a RegisterPage object.
+     *
+     * @param driver The WebDriver instance used to interact with the browser.
+     */
+    public RegisterPage(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
 
-
+    /**
+     * Registers a new user with the provided details.
+     *
+     * @param firstname The first name of the user.
+     * @param lastname  The last name of the user.
+     * @param day       The day of birth of the user.
+     * @param month     The month of birth of the user.
+     * @param year      The year of birth of the user.
+     * @param email     The email of the user.
+     * @param company   The company name of the user.
+     * @param password  The password for the user account.
+     */
     public void register(String firstname, String lastname, String day, String month,
                          String year, String email, String company, String password) {
 
-        //Click on register Button
+        // Click on register button
         driver.findElement(registerButton).click();
-        //wait.until(ExpectedConditions.urlContains("/register?returnUrl=%2F"));
 
         // Assert "Register title Page"
         Assert.assertEquals(driver.findElement(assertRegistrationPageTitle).getText(), "Register");
 
-        // Choose Female/male Gender
+        // Choose Female Gender
         driver.findElement(genderFemaleRadioButton).click();
 
-        //Input firstName
+        // Input first name
         driver.findElement(firstNameField).sendKeys(firstname);
 
-        //Input lastName
+        // Input last name
         driver.findElement(lastNameField).sendKeys(lastname);
 
-        //Select day of birth
+        // Select day of birth
         wait.until(ExpectedConditions.visibilityOfElementLocated(dayOfBirthField));
         Select selectDay = new Select(driver.findElement(dayOfBirthField));
         selectDay.selectByVisibleText(day);
 
-        //Select  Month of Birth
+        // Select month of birth
         wait.until(ExpectedConditions.visibilityOfElementLocated(monthOfBirthField));
         Select selectMonth = new Select(driver.findElement(monthOfBirthField));
         selectMonth.selectByVisibleText(month);
 
-        //Select Year of birth
+        // Select year of birth
         wait.until(ExpectedConditions.visibilityOfElementLocated(yearOfBirthField));
         Select selectYear = new Select(driver.findElement(yearOfBirthField));
         selectYear.selectByVisibleText(year);
 
-        //Input Email
+        // Input email
         driver.findElement(emailField).sendKeys(email);
 
-        //Input Company Name
+        // Input company name
         driver.findElement(companyField).sendKeys(company);
 
-        //Input Password
+        // Input password
         driver.findElement(passwordField).sendKeys(password);
 
-        //Confirm Password
+        // Confirm password
         driver.findElement(confirmPasswordField).sendKeys(password);
 
-        //Click On register Btn
+        // Click on register button
         wait.until(ExpectedConditions.elementToBeClickable(registerSubmitButton));
         driver.findElement(registerSubmitButton).click();
 
-        //Click on Continue btn
+        // Click on continue button
         wait.until(ExpectedConditions.visibilityOfElementLocated(continueButton));
         driver.findElement(continueButton).click();
-
-        //Assert success Registration
-       // Assert.assertEquals(driver.findElement(registerAssertion).getText(), "Your registration completed");
-        //System.out.println(driver.findElement(registerAssertion).getText());
-        //Click On Logout Btn
-        wait.until(ExpectedConditions.visibilityOfElementLocated(logOutButton));
-        driver.findElement(logOutButton).click();
-        //Verify navigation to HomePage after logout
-        //wait.until(ExpectedConditions.urlContains("https://demo.nopcommerce.com"));
     }
 
+    /**
+     * Asserts the success of the registration process.
+     *
+     * @return The success message after registration.
+     */
+    public String assertSuccessRegistration() {
+        return driver.findElement(registerAssertion).getText();
+    }
+
+    /**
+     * Logs out the current user.
+     */
+    public void logOut() {
+        // Click on logout button
+        wait.until(ExpectedConditions.visibilityOfElementLocated(logOutButton));
+        driver.findElement(logOutButton).click();
+    }
 }
-
-
-

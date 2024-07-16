@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -23,36 +22,46 @@ public class SearchItem {
     private final By productTitle = By.cssSelector("h2.product-title");
     private final By noResultMessage = By.cssSelector("div.no-result");
 
+    /**
+     * Searches for a product using the provided product name.
+     *
+     * @param productName The name of the product to search for.
+     */
     public void searchForProduct(String productName) {
         enterSearchTerm(productName);
         clickSearchButton();
-        verifyProductDisplayed();
     }
 
-    public void searchForNonExistingProduct(String productName) {
-        enterSearchTerm(productName);
-        clickSearchButton();
-        verifyNoResults();
-    }
-
+    /**
+     * Enters the search term into the search box.
+     *
+     * @param productName The name of the product to enter into the search box.
+     */
     private void enterSearchTerm(String productName) {
         driver.findElement(searchBox).clear();
         driver.findElement(searchBox).sendKeys(productName);
     }
 
+    /**
+     * Clicks the search button to initiate the product search.
+     */
     private void clickSearchButton() {
         driver.findElement(searchButton).click();
     }
 
-    private void verifyProductDisplayed() {
+    /**
+     * Verifies whether the product is displayed or if no results were found.
+     *
+     * @return The product title if displayed, or the no results message if not found.
+     */
+    public String verifyProductDisplay() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(productTitle));
-        Assert.assertEquals(driver.findElement(productTitle).getText(), "Apple MacBook Pro 13-inch",
-                "Product name does not match the expected value.");
-    }
 
-    private void verifyNoResults() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(noResultMessage));
-        Assert.assertEquals(driver.findElement(noResultMessage).getText(), "No products were found that matched your criteria.",
-                "Expected no results message not displayed.");
+        if (!driver.findElements(productTitle).isEmpty()) {
+            return driver.findElement(productTitle).getText();
+        } else {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(noResultMessage));
+            return driver.findElement(noResultMessage).getText();
+        }
     }
 }

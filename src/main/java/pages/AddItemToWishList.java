@@ -1,9 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,18 +10,24 @@ import java.time.Duration;
 public class AddItemToWishList {
     private final WebDriver driver;
     private final WebDriverWait wait;
-
-    public AddItemToWishList(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-    }
-
     // Locators
     private final By electronicsMenu = By.xpath("//a[@href='/electronics']");
     private final By cellPhonesLink = By.xpath("//a[@href='/cell-phones' and @title='Show products in category Cell phones']");
     private final By wishListPageLink = By.cssSelector("a.ico-wishlist");
     private final By closeBtn = By.cssSelector("span.close");
+    /**
+     * Constructor for AddItemToWishList.
+     *
+     * @param driver The WebDriver instance used to interact with the browser.
+     */
+    public AddItemToWishList(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    }
 
+    /**
+     * Adds items to the wishlist from the cell phones category.
+     */
     public void addItem() {
         // Click on the "Electronics" menu
         wait.until(ExpectedConditions.elementToBeClickable(electronicsMenu)).click();
@@ -37,6 +41,11 @@ public class AddItemToWishList {
         addProductToWishlist("20"); // Nokia Lumia 1020
     }
 
+    /**
+     * Adds a specific product to the wishlist using its product ID.
+     *
+     * @param productId The ID of the product to be added to the wishlist.
+     */
     private void addProductToWishlist(String productId) {
         By productButton = By.xpath("//div[@data-productid='" + productId + "']//button[contains(@class, 'add-to-wishlist-button')]");
 
@@ -46,6 +55,9 @@ public class AddItemToWishList {
         waitForAndClosePopup();
     }
 
+    /**
+     * Waits for the popup to appear and closes it if visible.
+     */
     private void waitForAndClosePopup() {
         try {
             // Wait for the popup to appear
@@ -61,6 +73,9 @@ public class AddItemToWishList {
         }
     }
 
+    /**
+     * Navigates to the wishlist page.
+     */
     public void navigateToWishListPage() {
         // Click on the Wishlist page link
         wait.until(ExpectedConditions.elementToBeClickable(wishListPageLink)).click();

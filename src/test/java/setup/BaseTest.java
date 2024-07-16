@@ -13,7 +13,8 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.get("https://demo.nopcommerce.com/");
     }
-    @AfterTest
+
+    //@AfterTest
     public void tearDown() {
         if (driver != null) {
             driver.quit(); // Quit all browser windows and end the WebDriver session.
