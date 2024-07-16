@@ -17,6 +17,7 @@ public class SearchItem {
     private final By searchButton = By.cssSelector("button.button-1.search-box-button");
     private final By productTitle = By.xpath("//a[contains(text(),'Apple MacBook Pro 13-inch')]");
     private final By productImage = By.xpath("//img[contains(@alt,'MacBook Pro')]");
+    private final By noResultMessage = By.className("no-result");
 
     public SearchItem(WebDriver driver) {
         this.driver = driver;
@@ -38,22 +39,24 @@ public class SearchItem {
     }
 
     public String verifyProductDisplay() {
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(productTitle));
-
         // Scroll down to ensure the product title is in view
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 300);");
 
+        // Check for product title visibility
         if (!driver.findElements(productTitle).isEmpty()) {
-            String title = driver.findElement(productTitle).getText();
-            if (title.contains("MacBook")) {
-                boolean isImageDisplayed = driver.findElement(productImage).isDisplayed();
-                return title + " - Image is displayed: " + isImageDisplayed;
-            }
-            return title + " - does not match MacBook.";
+            wait.until(ExpectedConditions.visibilityOfElementLocated(productTitle));
+            return driver.findElement(productTitle).getText() +
+                    " - Image is displayed: " + driver.findElement(productImage).isDisplayed();
         } else {
-            return "Product not found ";
+            return failedSearch();
         }
+    }
 
+    public String failedSearch() {
+        // Check if no result message is displayed
+        if (!driver.findElements(noResultMessage).isEmpty()) {
+            return driver.findElement(noResultMessage).getText();
+        }
+        return "No result message found.";
     }
 }

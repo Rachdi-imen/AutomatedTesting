@@ -37,6 +37,7 @@ public class RegisterPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+
     /**
      * Registers a new user with the provided details.
      *
@@ -45,12 +46,13 @@ public class RegisterPage {
      * @param day       The day of birth of the user.
      * @param month     The month of birth of the user.
      * @param year      The year of birth of the user.
-     * @param email     The email of the user.
+     * @param email     The email of the user
      * @param company   The company name of the user.
      * @param password  The password for the user account.
      */
     public void register(String firstname, String lastname, String day, String month,
                          String year, String email, String company, String password) {
+
 
         // Click on register button
         driver.findElement(registerButton).click();
@@ -98,6 +100,7 @@ public class RegisterPage {
         // Click on continue button
         wait.until(ExpectedConditions.visibilityOfElementLocated(continueButton));
         driver.findElement(continueButton).click();
+
     }
 
     /**
@@ -108,4 +111,5 @@ public class RegisterPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(logOutButton));
         driver.findElement(logOutButton).click();
     }
+
 }

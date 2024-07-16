@@ -16,7 +16,7 @@ public class AddItemToCart {
     private final By searchButton = By.cssSelector("button.button-1.search-box-button");
     private final By productTitle = By.cssSelector("h2.product-title");
     private final By addToCartBtn = By.id("add-to-cart-button-4");
-    private final By assertAddToCartAlert = By.cssSelector("p.content");
+    private final By assertAddToCartAlert = By.xpath("//p[@class='content']");
     private final By cartLink = By.cssSelector("a[href='/cart']");
 
     /**
@@ -60,7 +60,7 @@ public class AddItemToCart {
      */
     public String assertProductAddedToCart() {
         // Assert product added to cart
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(assertAddToCartAlert));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(assertAddToCartAlert));
         return driver.findElement(assertAddToCartAlert).getText();
     }
 

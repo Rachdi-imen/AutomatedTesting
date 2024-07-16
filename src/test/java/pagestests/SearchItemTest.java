@@ -14,18 +14,25 @@ public class SearchItemTest extends BaseTest {
         log.info("Starting valid product search for Apple MacBook Pro.");
         SearchItem searchItem = new SearchItem(driver);
         searchItem.searchForProduct("Apple MacBook Pro 13-inch");
+
         String result = searchItem.verifyProductDisplay();
         log.info("Result for valid product: " + result);
+
         Assert.assertTrue(result.contains("Apple MacBook Pro"), "Product title does not match.");
     }
 
     @Test(priority = 7)
     public void searchNonValidItem() {
-        log.info("Starting invalid product search for: " + "USB");
+
+        log.info("Starting invalid product search for: " + "TEST");
+
         SearchItem searchItem = new SearchItem(driver);
-        searchItem.searchForProduct("USB");
-        String result = searchItem.verifyProductDisplay();
+        searchItem.searchForProduct("TEST");
+
+        String result = searchItem.failedSearch();
         log.info("Result for invalid product: " + result);
 
+        String expectedMessage = "No products were found that matched your criteria.";
+        Assert.assertEquals(result, expectedMessage, "Expected no results message not displayed.");
     }
 }

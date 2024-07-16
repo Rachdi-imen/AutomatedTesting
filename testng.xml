@@ -12,14 +12,18 @@
 
 
     <test thread-count="5" name="E2E Checkout Test">
-
         <classes>
             <class name="pagestests.RegisterPageTest"/>
             <class name="pagestests.LoginPageTest"/>
             <class name="pagestests.AddItemToCartTest"/>
             <class name="pagestests.CheckoutProcessTest"/>
         </classes>
+    </test>
 
+    <test thread-count="5" name="E2E WishList Test">
+        <classes>
+            <class name="pagestests.WishListPageTest"/>
+        </classes>
     </test>
 
     <test thread-count="5" name=" E2E Search Item Test">
@@ -29,11 +33,5 @@
 
     </test>
 
-    <test thread-count="5" name="E2E WishList Test">
-        <classes>
-            <class name="pagestests.WishListPageTest"/>
-
-        </classes>
-    </test>
 
 </suite> <!-- Suite -->
