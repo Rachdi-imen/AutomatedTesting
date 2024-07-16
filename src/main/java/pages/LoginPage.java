@@ -12,10 +12,11 @@ public class LoginPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
     // Locators
-    private final By loginButton = By.cssSelector("a[href='/login?returnUrl=%2F']");
+    private final By loginButton = By.linkText("Log in");
     private final By inputEmail = By.id("Email");
     private final By inputPassword = By.id("Password");
     private final By logInBtn = By.cssSelector("button.button-1.login-button");
+
     /**
      * Constructs a LoginPage object.
      *
@@ -34,6 +35,7 @@ public class LoginPage {
      */
     public void login(String email, String pwd) {
         // Click on the login button
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton));
         driver.findElement(loginButton).click();
 
         // Input email

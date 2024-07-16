@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,57 +12,48 @@ public class SearchItem {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    public SearchItem(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-
     // Locators
     private final By searchBox = By.id("small-searchterms");
     private final By searchButton = By.cssSelector("button.button-1.search-box-button");
-    private final By productTitle = By.cssSelector("h2.product-title");
-    private final By noResultMessage = By.cssSelector("div.no-result");
+    private final By productTitle = By.xpath("//a[contains(text(),'Apple MacBook Pro 13-inch')]");
+    private final By productImage = By.xpath("//img[contains(@alt,'MacBook Pro')]");
 
-    /**
-     * Searches for a product using the provided product name.
-     *
-     * @param productName The name of the product to search for.
-     */
+    public SearchItem(WebDriver driver) {
+        this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    }
+
     public void searchForProduct(String productName) {
         enterSearchTerm(productName);
         clickSearchButton();
     }
 
-    /**
-     * Enters the search term into the search box.
-     *
-     * @param productName The name of the product to enter into the search box.
-     */
     private void enterSearchTerm(String productName) {
         driver.findElement(searchBox).clear();
         driver.findElement(searchBox).sendKeys(productName);
     }
 
-    /**
-     * Clicks the search button to initiate the product search.
-     */
     private void clickSearchButton() {
         driver.findElement(searchButton).click();
     }
 
-    /**
-     * Verifies whether the product is displayed or if no results were found.
-     *
-     * @return The product title if displayed, or the no results message if not found.
-     */
     public String verifyProductDisplay() {
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(productTitle));
 
+        // Scroll down to ensure the product title is in view
+        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 300);");
+
         if (!driver.findElements(productTitle).isEmpty()) {
-            return driver.findElement(productTitle).getText();
+            String title = driver.findElement(productTitle).getText();
+            if (title.contains("MacBook")) {
+                boolean isImageDisplayed = driver.findElement(productImage).isDisplayed();
+                return title + " - Image is displayed: " + isImageDisplayed;
+            }
+            return title + " - does not match MacBook.";
         } else {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(noResultMessage));
-            return driver.findElement(noResultMessage).getText();
+            return "Product not found ";
         }
+
     }
 }

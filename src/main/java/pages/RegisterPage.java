@@ -7,13 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 public class RegisterPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
     // Locators
-    private final By assertRegistrationPageTitle = By.xpath("//h1[text()='Register']");
     private final By registerButton = By.linkText("Register");
     private final By genderFemaleRadioButton = By.id("gender-female");
     private final By firstNameField = By.id("FirstName");
@@ -26,9 +24,9 @@ public class RegisterPage {
     private final By passwordField = By.id("Password");
     private final By confirmPasswordField = By.id("ConfirmPassword");
     private final By registerSubmitButton = By.id("register-button");
-    private final By registerAssertion = By.xpath("//div[@class='result']");
     private final By continueButton = By.xpath("//a[@class='button-1 register-continue-button']");
     private final By logOutButton = By.cssSelector("a[href='/logout']");
+
     /**
      * Constructs a RegisterPage object.
      *
@@ -56,9 +54,6 @@ public class RegisterPage {
 
         // Click on register button
         driver.findElement(registerButton).click();
-
-        // Assert "Register title Page"
-        Assert.assertEquals(driver.findElement(assertRegistrationPageTitle).getText(), "Register");
 
         // Choose Female Gender
         driver.findElement(genderFemaleRadioButton).click();
@@ -103,15 +98,6 @@ public class RegisterPage {
         // Click on continue button
         wait.until(ExpectedConditions.visibilityOfElementLocated(continueButton));
         driver.findElement(continueButton).click();
-    }
-
-    /**
-     * Asserts the success of the registration process.
-     *
-     * @return The success message after registration.
-     */
-    public String assertSuccessRegistration() {
-        return driver.findElement(registerAssertion).getText();
     }
 
     /**

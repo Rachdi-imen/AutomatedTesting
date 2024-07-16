@@ -6,41 +6,34 @@
              <listener class-name="io.qameta.allure.testng.AllureTestNg" />
          </listeners>
    -->
- <listeners>
-  <listener class-name="utils.ExtentTestNGITestListener"/>
- </listeners>
+    <listeners>
+        <listener class-name="utils.ExtentTestNGITestListener"/>
+    </listeners>
 
 
+    <test thread-count="5" name="E2E Checkout Test">
 
-  <test thread-count="5" name="E2E Test">
-
-      <classes>
-          <class name="pagestests.RegisterPageTest"/>
-          <class name="pagestests.LoginPageTest"/>
-          <class name="pagestests.AddItemToCartTest"/>
-          <class name="pagestests.CheckoutProcessTest"/>
-      </classes>
-
-  </test>
-
-
-    <test thread-count="5" name="Test2">
         <classes>
-            <class name="pagestests.WishListPageTest"/>
-
+            <class name="pagestests.RegisterPageTest"/>
+            <class name="pagestests.LoginPageTest"/>
+            <class name="pagestests.AddItemToCartTest"/>
+            <class name="pagestests.CheckoutProcessTest"/>
         </classes>
 
     </test>
 
-
-
-    <test thread-count="5" name="Test3">
+    <test thread-count="5" name=" E2E Search Item Test">
         <classes>
             <class name="pagestests.SearchItemTest"/>
-
-
         </classes>
 
+    </test>
+
+    <test thread-count="5" name="E2E WishList Test">
+        <classes>
+            <class name="pagestests.WishListPageTest"/>
+
+        </classes>
     </test>
 
 </suite> <!-- Suite -->
